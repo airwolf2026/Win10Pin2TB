@@ -2,7 +2,7 @@
 
 ### 中文版
 
-- Win10开始，微软限制程序对用户的任务栏进行直接操作，本程序可以把程序图标固定在任务栏或者开始菜单上。本小工具通过逆向syspin.exe后完成，目的仅仅是个人兴趣爱好，请广大开发者尊重用户的自主选择权.
+- Win10开始，微软限制程序对用户的任务栏进行直接操作，本程序可以把程序图标固定在任务栏或者开始菜单上。本小工具通过逆向[syspin.exe](http://www.technosys.net/products/utils/pintotaskbar)后完成，目的仅仅是个人兴趣爱好，请广大开发者尊重用户的自主选择权.
 
 ### 编译需知
 
@@ -15,7 +15,7 @@
 
 ### 已知问题
 
-- bug同syspin，无法被NSIS安装器调用，会导致资源管理器崩溃,55555555。
+- bug同[syspin](http://www.technosys.net/products/utils/pintotaskbar)，无法被NSIS安装器调用，会导致资源管理器崩溃,55555555。
 - 原因：可能是com资源问题导致？知道如何解决的大佬，麻烦告知，多谢。
 
 
@@ -26,7 +26,7 @@
 
 - Win10 Pin App Icon to taskbar
 
-- Starting from win10, Microsoft limited the program to operate the user's taskbar directly. This program can pin program's icon on the taskbar or start menu. This gadget is completed after reverse enginerring syspin.exe. The purpose is only personal interests IN reverse enginerring study. Please respect the user's choice.
+- Starting from win10, Microsoft limited the program to operate the user's taskbar directly. This program can pin program's icon on the taskbar or start menu. This gadget is completed after reverse enginerring [syspin.exe](http://www.technosys.net/products/utils/pintotaskbar). The purpose is only personal interests IN reverse enginerring study. Please respect the user's choice.
 
 -  Don't do evil with your user‘s desktop!
 
@@ -36,7 +36,7 @@
 
 ### Usage
 
-- Parameters like syspin
+- Parameters like [syspin](http://www.technosys.net/products/utils/pintotaskbar)
 - winxtool.exe "your app path" [5386/5387]
 
 ### Know issues
