@@ -33,7 +33,10 @@ static const void WINAPI replace_wchar(const wchar_t *srcStr, wchar_t replaceCha
 	if (srcStr == NULL)
 		return ;
 
-	int strLen = (int)wcslen(srcStr);
+	int strLen = 0;
+	const wchar_t* sptr = srcStr;
+	while (*sptr++) ++strLen;
+
 	if (strLen >= 0)
 	{
 		int lastIndex = strLen;
@@ -76,11 +79,11 @@ static DWORD WINAPI thread_func(void* pContextData)
 	{
 		HMODULE hShell32 = GetModuleHandleW(L"shell32.dll");
 		LoadStringW(hShell32, opCode, commandString, MAX_PATH);
-		_wcslwr_s(commandString);
+		CharLowerW(commandString);
 	}
 	else
 	{
-		wcscpy_s(commandString, (WCHAR*)((char*)pContextData + MAX_PATH * 4));
+		StringCchCopyW(commandString, MAX_PATH, (WCHAR*)((char*)pContextData + MAX_PATH * 4));
 	}
 
 	IShellDispatch* pIShellDispatch = NULL;
@@ -129,13 +132,12 @@ static DWORD WINAPI thread_func(void* pContextData)
 						{
 							BSTR pVerbName = NULL;
 							hResult = pVerb->get_Name(&pVerbName);
-							if (pVerbName == NULL || wcslen((wchar_t*)pVerbName)==0)
+							if (pVerbName == NULL || *(wchar_t*)pVerbName == 0)
 								continue;
-							memset(tempName, 0, MAX_PATH * 2);//in Syspin,directly change pVerName could led memory corrupt Edited by xyq@2019-11-1 15:17:22
-							wcscpy_s(tempName, pVerbName);
+							StringCchCopyW(tempName, MAX_PATH, pVerbName);
 							replace_wchar((wchar_t*)tempName, L'&');
-							_wcslwr_s((wchar_t*)tempName, MAX_PATH);
-							if (SUCCEEDED(hResult) && !wcscmp((wchar_t*)tempName, commandString))
+							CharLowerW(tempName);
+							if (SUCCEEDED(hResult) && !lstrcmpW((wchar_t*)tempName, commandString))
 							{
 								pTargetVerb = pVerb;
 								break;
