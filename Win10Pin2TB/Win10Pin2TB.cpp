@@ -212,7 +212,7 @@ BOOL __fastcall InjectFun2Explorer(LPCVOID lpThreadArgs, HANDLE hProcess, thread
 							}
 						}
 					}
-					((char*)pLocalMem)[pNTH->OptionalHeader.AddressOfEntryPoint] = 0x55;//todo:why change entryPoint？Edited by xyq@2019-10-24 16:06:08
+
 					if (WriteProcessMemory(hProcess, pProgman_mem, pLocalMem, image_size, 0i64))
 					{
 						SIZE_T NumberOfBytesWritten = 0;
